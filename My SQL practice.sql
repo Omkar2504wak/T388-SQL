@@ -91,6 +91,73 @@ update employee SET TITLE="MR." where gender="male";
 update employee SET TITLE="MRs." where gender="female";
  update employee set bonus = salary*0.05;
  select * from employee;
+ 
+ 
+ 
+ 
+ 
+ use T388;
+ create table kisan_info
+ (ID int unique not null,
+ name varchar(50) unique not null,
+ age int check (age>=18),
+ email_ID varchar (40) default "dummy@gmail.com"
+ );
+ describe kisan_info;
+ insert into kisan_info
+ values
+ (101,"alisha",16,default);
+ 
+ select * from kisan_info;
+ truncate kisan_info;
+ use T388;
+ create table kisan_info
+ (ID int unique not null,
+ name varchar(50) unique not null,
+ age int check (age>=18),
+ email_ID varchar (40) default "dummy@gmail.com"
+ );
+ describe kisan_info;
+ insert into kisan_info
+ values
+ (101,"alisha",16,default);
+ 
+ select * from kisan_info;
+ alter table kisan_info modify column age int check (age>=18);
+ drop table kisan_info;
+  use T388;
+ create table kisan_info
+ (ID int unique not null,
+ name varchar(50) unique not null,
+ age int check (age>=18),
+ email_ID varchar (40) default "dummy@gmail.com"
+ );
+ describe kisan_info;
+ insert into kisan_info
+ values
+ (101,"alisha",26,default);
+  insert into kisan_info
+ values
+ (103,"omii",33, "omii@gmail.com");
+ 
+ select * from kisan_info;
+ alter table kisan_info modify age int check (age>=20);
+ 
+ 
+ select distinct Department from employee;
+ select distinct gender from employee;
+ 
+ 
+ 
+ 
+ select * from employee
+ where Department ="It"  or Department ="finance";
+ 
+ select * from employee
+ where Department in ("it","finance");
+ 
+ 
+
 
 
 
