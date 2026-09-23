@@ -259,5 +259,120 @@ order by duration desc;
 
 select * from employee order by EmployeeId desc limit 5;
 select * from employee limit 3,5;
+select distinct department from employee;
+select distinct Gender from employee;
+select distinct age from employee;
+ select * from projects;
+ select * from projects where EmployeeId is null;-- use to show null values
+  select * from projects where EmployeeId is not null; -- use to show all values without null
+update projects set employeeid = 1003 where projectId =6;
+-- auto increment 
+
+-- IN , between and like
+select * from employee where age between 25 and 28;
+select * from employee where EmployeeId between 1003 and 1007;
+select * from employee where EmployeeId in (1003,1005,1007);
+select * from employee where 
+age in (23,28)
+and Department = "IT"
+and EmployeeId IN (1008,1001);
+ -- like operator imp topic 
+  select * from employee where FullName like "%M%";
+  select * from employee where FullName like "__K%";
+  select * from employee where FullName like "M%";
+  select * from employee where FullName like "%M__";
+   select * from simple;
+     select * from employee where FullName like "%M__" -- use fullname in excel
+   select * from simple where name like "a%";
+   select * from simple where name like "a%t";
+
+-- BUILT  SQL FUNCTION 
+select avg(Salary) from employee;
+select sum(Salary) from employee;
+select max(Salary) from employee;
+select min(Salary) from employee;
+select count(*) from employee;
+select count(*) as total_EMP,
+avg(Salary) AS AVERAGE 
+,sum(salary) as total_salary from employee;
+
+-- math function 
+-- absolute 
+select abs (-35);
+select abs (6*(-7));
+select datediff(startdate, enddate) as duration from projects;
+-- mod 
+select mod(12,7); -- return the remainder values
+
+select ceil(33.8);
+select floor(33.8);
+
+-- TRUNCATE (X,D)
+select truncate(123456.8765432, 1);
+select truncate(123456.8765432, 0);
+select truncate(123456.8765432, -0);
+
+-- EXPONEN FUNCTION
+
+select power(2,4);
+select pow(2,4);
+
+select sqrt(196);
+select *, sqrt(salary) from employee;
+ -- concat
+ select concat("Good"," ","morning") as remarks;
+ 
+ select *, concat(fullname,"@itvedant.com") as email from employee;
+  
+-- lower & uppar
+select *, lower(fullname) as newname, 
+upper(fullname) as CAPITALNAME from employee;
+select* from employee;
+alter table employee add EMAIL varchar(50);
+update employee set EMAIL = concat(fullname, "@gmail.com");
+-- replace
+select replace("Hello Everyone, Goond Night", "Night","morning") as Statement;
+select fullname, replace(fullname, "Jones","patil") as changed from employee;
+
+-- reverse
+select fullname, replace(fullname, "Jones","patil") as changed,
+reverse (fullname) 
+from employee;
+select fullname , length(fullname)
+from employee;
+
+-- substring
+select substring("Maharashtra",5,3);
+-- trimmer left & right
+select fullname , length(fullname) as actual_Lenght
+,ltrim(fullname) as lefttrim, length(ltrim(fullname)) as LTRIM_Lenght,
+ rtrim(fullname) as righttrim, length(rtrim(fullname)) as RTRIM_Lenght from trimmer;
+ 
+ select fullname , length(fullname) as actual_Lenght
+,ltrim(fullname) as lefttrim, length(ltrim(fullname)) as LTRIM_Lenght,
+ rtrim(fullname) as righttrim, length(rtrim(fullname)) as RTRIM_Lenght, 
+ trim(fullname) as both_sides_trim, length(rtrim(fullname)) as All_Trim_Lenght
+ from trimmer;
+ 
+ -- sub quries imp for sql
+ select * from employee;
+ select age from employee where EmployeeId = 1002;
+ select age from employee where FullName = "Mary Smith";
+ 
+ select* from employee
+ where age =(select age from employee where FullName = "Mary Smith");
+ 
+ select * from employee
+ where salary =(select salary from employee where FullName = "John doe");
+ 
+ select * from employee
+ where Department =(select department from employee where FullName = "John doe");
+ 
+select max(salary) from employee;  -- 1 highest salary
+ select max(salary) from employee where salary <(select max(salary) from employee); -- 2nd  highest salary
+ 
+ -- 3 rd highest salary
+  select max(salary) from employee 
+  where salary <(select max(salary) from employee where salary <(select max(salary) from employee));
 
 
