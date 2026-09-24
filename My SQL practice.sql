@@ -374,5 +374,17 @@ select max(salary) from employee;  -- 1 highest salary
  -- 3 rd highest salary
   select max(salary) from employee 
   where salary <(select max(salary) from employee where salary <(select max(salary) from employee));
-
-
+  
+  -- multipal row Subquery
+  select * from employee;
+  select age from  employee where EmployeeId in (1002,1003);
+  
+  select * from employee
+  where age in (select age from  employee where EmployeeId in (1002,1003));
+  
+   select * from employee where
+   salary >any(select Salary from employee where EmployeeId between 1001 and 1003);
+   
+   select * from employee where
+   salary <all(select Salary from employee where EmployeeId between 1001 and 1003);
+  
