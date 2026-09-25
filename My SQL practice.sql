@@ -382,9 +382,22 @@ select max(salary) from employee;  -- 1 highest salary
   select * from employee
   where age in (select age from  employee where EmployeeId in (1002,1003));
   
-   select * from employee where
+   select * from salary where
    salary >any(select Salary from employee where EmployeeId between 1001 and 1003);
    
    select * from employee where
    salary <all(select Salary from employee where EmployeeId between 1001 and 1003);
-  
+   
+-- join  subquery
+ select * from Salary_t388;
+  select * from Name_t388;
+select Salary_t388.id, Name, Salary from Name_t388 
+join 
+ Salary_t388 on Salary_t388.id = Name_t388.id;
+ 
+ -- left join
+ select salary_t388.id, name, salary from salary_t388 left join name_t388 on salary_t388.id = name_t388.id;
+select name_t388.id, name, salary from name_t388 left join salary_t388 on name_t388.id = salary_t388.id;
+  -- right join 
+  select name_t388.id, name, salary from salary_t388 right join name_t388 on salary_t388.id = name_t388.id;
+  select salary_t388.id, name, salary from name_t388 right join salary_t388 on name_t388.id = salary_t388.id;
